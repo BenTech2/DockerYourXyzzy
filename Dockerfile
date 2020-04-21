@@ -21,11 +21,11 @@ ADD overrides /overrides
 ADD scripts/entrypoint.sh scripts/bootstrap.sh scripts/maven.sh /
 
 # PYX
-ENV GIT_BRANCH="master"
+ENV GIT_BRANCH="developement"
 VOLUME /app /output
 
 RUN apk --no-cache add git openssh \
- && git clone -b $GIT_BRANCH https://github.com/ajanata/PretendYoureXyzzy.git /project \
+ && git clone -b $GIT_BRANCH https://git.clrtd.com/root/PretendYoureXyzzy-CLRTD.git /project \
  && cd project \
  && cp build.properties.example build.properties \
  && mvn clean package war:war -Dhttps.protocols=TLSv1.2 -Dmaven.buildNumber.doCheck=false -Dmaven.buildNumber.doUpdate=false
